@@ -82,16 +82,15 @@ async function myFetch() {
     //need to add URLand return response.json 
     let planetsReturned = ;
 
-    planetsReturned = await fetch(https://handlers.education.launchcode.org/static/planets.json).then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         )
 
     return planetsReturned;
 };
 
 function pickPlanet(planets) {
-    planets = planetsReturned
     for(i=0; i < planets.length; i++)
-    return planetsReturned[Math.random(i)]
+    return (planets[Math.random(i)])
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
