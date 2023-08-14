@@ -16,64 +16,82 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                 <img src="">
    */
 }
-// I need to add preventDefault(),  *DOES IT GO IN validateInput()*
-//    a. The user has entered something for every field.
-//    b. The user has entered string values for names and number for fuel and cargo levels.
+
+
+
 function validateInput(testInput) {
    //takes in a string and returns "Empty", "Not a Number" (uses isNAN()), or "Is a Number", use it to complete formSubmission
-if(testInput === ""){
-    return "Empty"
+alert("All fields are required!")
+   if(testInput === ""){
+    return "Empty" //makes sure parameter isn't an empty string
 }
 
 else if (isNaN(Number(testInput))){
-    return "Is Not a Number"
+    return "Is Not a Number" //tries to change it to a number and then checks that it isNAN
 
 }
 else{
-   return "Is a Number"
+   return "Is a Number" //It actually was a number if it made it this far
 }
 
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    let document = document.querySelector("launchStatusCheck");
+    let form = document.querySelector("faultyItems");
+    let pilot = document.querySelector(pilotStatus.value);
+    let copilot = document.querySelector(copilot.value);
+    let fuelLevel = document.querySelector(fuelStatus.value);
+    let cargoLevel = document.querySelector(cargoStatus.value);
    //takes document param or string for the others, values are for HTML doc =, updat shuttle req. *Make sure to call it at right time in script file*
    //validateInput?
      //change pilotStatus Id
 
-//        if (pilotNameInput.value === "" || copilotNameInput.value === ""|| fuelLevelInput.value === ""|| cargoMassInput.value === "") {
-//           alert("All fields are required!");
-//           // stop the form submission
+       if (pilot === "" || copilot === ""|| fuelLevel === ""|| cargoLevel === "") {
+          alert("All fields are required!");
+          // stop the form submission
    
-//       }
-//        else if{validateInput(pilotNameInput.value)=== true}{
-//         let pilotStatus = ${pilotNameInput.value} ready
-//        }
-//        else if{validateInput(copilotNameInput.value)=== true}{
-//         let copilotStatus = ${copilotNameInput.value} ready
-//        }
-//        else if{validateInput(fuelLevel.value) === true && fuelLevel.value <= 10000>}{
-//         let fuelStatus = Not enough fuel for journey;
-//         let launchStatus = Shuttle not ready;
-//         <h2 style = "color:red;"></h2>
-//         #faultyItems{"visibilty:visible"}
-//        }
-//     });
-//  });
-
-}
+      }
+       else if{validateInput(pilot)=== true}{
+        let pilot = ${pilotNameInput.value} ready
+       }
+       else if{validateInput(copilot)=== true}{
+        let copilot = ${copilotNameInput.value} ready
+       }
+       else if{validateInput(fuelLevel) === true && fuelLevel <= 10000>}{
+        let fuelStatus = Not enough fuel for journey;
+        let launchStatus = Shuttle not ready;
+        <h2 style = "color:  #C7254E ;"></h2>
+        #faultyItems{"visibilty:visible"}
+       }
+       else if{validateInput(cargoLevel) === true && cargoLevel <= 10000>}{
+        let cargoStatus = Not enough fuel for journey;
+        let launchStatus = Shuttle not ready;
+        <h2 style = "color: #C7254E ;"></h2>
+        #faultyItems{"visibilty:visible"}
+       }
+       else {
+        let launchStatus = Shuttle is ready for launch!;
+        <h2 style = "color: #419F6A ;"></h2>
+      
+       }
+    };
+ 
 
 async function myFetch() {
-    //need to add URLand return response.json
-    let planetsReturned;
+    //need to add URLand return response.json 
+    let planetsReturned = ;
 
-    planetsReturned = await fetch().then( function(response) {
-        });
+    planetsReturned = await fetch(https://handlers.education.launchcode.org/static/planets.json).then( function(response) {
+        )
 
     return planetsReturned;
-}
+};
 
 function pickPlanet(planets) {
-    //takes list of planets, use Math.Random to select one index
+    planets = planetsReturned
+    for(i=0; i < planets.length; i++)
+    return planetsReturned[Math.random(i)]
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
