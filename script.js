@@ -10,13 +10,14 @@ window.addEventListener("load", function() {
     let form = document.querySelector("form");
     let list = document.getElementById("faultyItems");
     form.addEventListener("submit", function(event) {
+        event.preventDefault();  
        let pilotNameInput = document.querySelector("input[name=pilotName]").value;
        let copilotNameInput = document.querySelector("input[name=copilotName]").value;
        let fuelLevelInput = document.querySelector("input[name=fuelLevel]").value;
        let cargoMassInput = document.querySelector("input[name=cargoMass]").value;
        
        formSubmission(document, list, pilotNameInput,copilotNameInput,fuelLevelInput, cargoMassInput);
-          event.preventDefault();  
+      
 })
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch() 

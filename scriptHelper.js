@@ -5,7 +5,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     //doesn't need to return anything
    // uncomment put inside template literal, get mission target element set inner html of element to template literal
    // Here is the HTML formatting for our mission 
-    const missionTarget = document.getElementByID("missionTarget")
+    const missionTarget = document.getElementById("missionTarget")
     missionTarget.innerHTML =
       `
                 <h2>Mission Destination</h2>
@@ -16,7 +16,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                     <li>Distance from Earth:${distance} </li>
                     <li>Number of Moons: ${moons} </li>
                 </ol>
-                <img src="${image}">
+                <img src="${imageUrl}">
    
 `}
 
@@ -41,11 +41,11 @@ else{
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
    //takes document param or string for the others, values are for HTML doc =, updat shuttle req. *Make sure to call it at right time in script file*
-    let pilotStatus= document.getElementByID("pilotStatus");
-    let copilotStatus = document.getElementByID("copilotStatus");
-    let launchStatus = document.getElementByID("launchStatus");
-    let fuelStatus = document.getElementByID("fuelStatus");
-    let cargoStatus = document.getElementByID("cargoStatus");
+    let pilotStatus= document.getElementById("pilotStatus");
+    let copilotStatus = document.getElementById("copilotStatus");
+    let launchStatus = document.getElementById("launchStatus");
+    let fuelStatus = document.getElementById("fuelStatus");
+    let cargoStatus = document.getElementById("cargoStatus");
 
        if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty"|| validateInput(fuelLevel) === "Empty"|| validateInput(cargoLevel) === "Empty") {
           alert("All fields are required!");
@@ -55,12 +55,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         alert("Valid Input Required")
        }
       else{
-        pilotStatus.innerHTML = `${pilotNameInput} ready`
-        copilotStatus.innerHTML = `${copilotNameInput} ready`
+        pilotStatus.innerHTML = `${pilot} ready`
+        copilotStatus.innerHTML = `${copilot} ready`
         list.style.visibility = "visible";
       
   
-      if(fuelLevel <= 10000 && cargoLevel >= 10000){
+      if(fuelLevel < 10000 && cargoLevel > 10000){
         fuelStatus.innerHTML = "Not enough fuel for journey";
         cargoStatus.innerHTML = "Cargo mass too high for launch";
         launchStatus.innerHTML = "Shuttle not ready";
@@ -68,14 +68,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 
        }
-       else if(fuelLevel >= 10000 && cargoLevel <= 10000){
+       else if(fuelLevel >= 10000 && cargoLevel > 10000){
         cargoStatus.innerHTML = "Cargo mass too high for launch";
         fuelStatus.innerHTML = "Fuel level high enough for launch";
         launchStatus.innerHTML = "Shuttle not ready";
         launchStatus.style.color =  "#C7254E";
         }
         
-        else if(fuelLevel <= 10000 && cargoLevel >= 10000){
+        else if(fuelLevel < 10000 && cargoLevel <= 10000){
         cargoStatus.innerHTML = "Cargo mass low enough for journey";
         fuelStatus.innerHTML = "Not enough fuel for journey";
         launchStatus.innerHTML = "Shuttle not ready";
@@ -83,6 +83,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         }
        else {
         launchStatus.innerHTML = "Shuttle is ready for launch!";
+        cargoStatus.innerHTML = "Cargo mass low enough for journey";
+        fuelStatus.innerHTML = "Fuel level high enough for launch";
         launchStatus.style.color =  "#419F6A" ;
       
        }
@@ -92,7 +94,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 async function myFetch() {
 
-    let planetsReturned = 
+    let planetsReturned 
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) { 
         return response.json()
