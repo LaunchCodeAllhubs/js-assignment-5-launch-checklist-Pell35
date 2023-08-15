@@ -1,7 +1,7 @@
 // Write your JavaScript code here!
 // *call formSub at right time*
 
-const { pickPlanet, formSubmission, addDestinationInfo } = require("./scriptHelper");
+
 
 //
 window.addEventListener("load", function() {
