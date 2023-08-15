@@ -55,29 +55,29 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
        }
    
       
-       else if{validateInput(pilot)}{
+       else if(validateInput(pilot)){
         let pilot = `${pilotNameInput} ready`
        }
-       else if{validateInput(copilot)} {
+       else if(validateInput(copilot)) {
         let copilot = `${copilotNameInput} ready`
        }
-       else if{(fuelLevel < 10000)}{
-        faultyItems.style.visibility = visible;
+       else if(fuelLevel < 10000){
+        faultyItems.style.visibility = "visible";
         let fuelStatus = "Not enough fuel for journey";
         let launchStatus = "Shuttle not ready";
-        launchStatus.style.color =  #C7254E;
- 
+        launchStatus.style.color =  "#C7254E";
+
 
        }
-       else if{(cargoLevel > 10000)}{
+       else if(cargoLevel > 10000){
         faultyItems.style.visibility = "visible";
         let cargoStatus = "Not enough fuel for journey";
         let launchStatus = "Shuttle not ready";
-        launchStatus.style.color =  #C7254E;
+        launchStatus.style.color =  "#C7254E";
        }
        else {
         let launchStatus = "Shuttle is ready for launch!";
-        launchStatus.style.color =  #419F6A ;
+        launchStatus.style.color =  "#419F6A" ;
       
        }
     };
@@ -85,7 +85,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
 async function myFetch() {
 
-    let planetsReturned = ;
+    let planetsReturned = 
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         
@@ -95,9 +95,9 @@ async function myFetch() {
 
 function pickPlanet(planets) {
    
-    return (planets[Math.floor(Math.random() * 6);])
+    return (planets[Math.floor(Math.random() * 6)]);
 }
-
+}
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
